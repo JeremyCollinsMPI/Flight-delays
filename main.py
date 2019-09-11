@@ -9,6 +9,12 @@ from tensorflow.keras import layers
 from sklearn.model_selection import train_test_split
 from tensorflow.keras.models import load_model
 from datetime import datetime
+import argparse 
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--mode')
+args = parser.parse_args()
+print(args.mode)
 
 file = 'flight_delays_data.csv'
 df = pd.read_csv(file, header = 0, sep = ',', na_filter=False)
@@ -69,7 +75,7 @@ def train():
   ])
 
   model.compile(optimizer='adam',
-                loss='mean_squared_error',,
+                loss='mean_squared_error',
                 run_eagerly=True)
   model.fit(train_ds,
             validation_data=val_ds,
@@ -83,8 +89,10 @@ def evaluate():
   loss = model.evaluate(test_ds)
   print("MSE Loss", loss)
 
-train()
-
+if args.mode == 'train':
+  train()
+if args.mode == 'evaluate':
+  evaluate()
 
 
 
