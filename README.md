@@ -1,17 +1,17 @@
 # Flight-delays
 Set up
 
-Install docker.
-docker run -it --rm jeremycollinsmpi/flight-data:latest
-
-Alternatively:
+Dependencies:
 python 3.5
-pip install pandas matplotlib tensorflow==2.0.0-rc0 SciPy numpy
+pip install pandas matplotlib tensorflow==2.0.0-rc0 SciPy numpy sklearn
+
+Alternatively run this docker container, which also contains the repository:
+docker run -it --rm jeremycollinsmpi/flight-data:latest
 
 To run the script:
 
-python main.py --train
+python main.py --mode train
 
 or 
 
-python main.py --evaluate
+python main.py --mode evaluate
