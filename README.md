@@ -29,7 +29,7 @@ python main.py --mode evaluate
 This repository is for predicting flight delay time in a dataset provided in this link (https://t1.me/docs/assessments).
 The model uses the following variables as one-hot vectors:
 
-Week of the year (1-52), Year (2013-2017), Hour of the day (0-23), Airline, Flight number, Destination
+Week of the year (1-52), Year (2013-2016), Hour of the day (0-23), Airline, Flight number, Destination
 
 and the following model to predict whether a flight will be delayed by more than three hours (or cancelled):
 
