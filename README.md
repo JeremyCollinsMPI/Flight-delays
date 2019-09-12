@@ -49,3 +49,5 @@ This model can also take dependent probabilities by assuming that there are othe
 This calculation of probabilities is equivalent to 1 - exp(ln(p1) + ln(p2)), which means that the appropriate activation function for this model is 1 - exp(x).  
 
 ![alt text](https://github.com/JeremyCollinsMPI/Flight-delays/blob/master/dag1.png)
+
+additionally, a feature cross between week and arrival is used.  this is to model e.g. weather events.
