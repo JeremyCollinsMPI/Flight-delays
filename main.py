@@ -14,7 +14,7 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('--mode')
 args = parser.parse_args()
-print(args.mode)
+
 
 file = 'flight_delays_data.csv'
 df = pd.read_csv(file, header = 0, sep = ',', na_filter=False)
@@ -26,7 +26,7 @@ def extract_year(string):
 df['Day'] = df.flight_date.apply(extract_weekday)
 df['Year'] = df.flight_date.apply(extract_year)
 dataframe = df
-train, test = train_test_split(dataframe, test_size=0.2)
+train, test = train_test_split(dataframe, test_size=0.9)
 train, val = train_test_split(train, test_size=0.2)
 
 def df_to_dataset(dataframe, shuffle=True, batch_size=32, target_column='target'):
@@ -56,12 +56,27 @@ for i in range(2013, 2017):
   boundaries.append(i)
 year = feature_column.bucketized_column(year, boundaries=boundaries)
 
-arrival = feature_column.indicator_column(feature_column.categorical_column_with_vocabulary_list("Arrival",vocabulary_list=pd.Series.unique(df.Arrival).tolist()))
-airline = feature_column.indicator_column(feature_column.categorical_column_with_vocabulary_list("Airline",vocabulary_list=pd.Series.unique(df.Airline).tolist()))
-flight_no = feature_column.indicator_column(feature_column.categorical_column_with_vocabulary_list("flight_no",vocabulary_list=pd.Series.unique(df.flight_no).tolist()))
+hour = feature_column.numeric_column("std_hour")
+boundaries = []
+for i in range(0,24):
+  boundaries.append(i)
+hour = feature_column.bucketized_column(hour, boundaries=boundaries)
+
+arrival = feature_column.categorical_column_with_vocabulary_list("Arrival",vocabulary_list=pd.Series.unique(df.Arrival).tolist())
+airline = feature_column.categorical_column_with_vocabulary_list("Airline",vocabulary_list=pd.Series.unique(df.Airline).tolist())
+flight_no = feature_column.categorical_column_with_vocabulary_list("flight_no",vocabulary_list=pd.Series.unique(df.flight_no).tolist())
+
+arrival_one_hot = feature_column.indicator_column(arrival)
+airline_one_hot = feature_column.indicator_column(airline)
+flight_no_one_hot = feature_column.indicator_column(flight_no)
+
+
+arrival_length = len(pd.Series.unique(df.Arrival).tolist())
+arrival_and_week = feature_column.crossed_column([arrival, week], hash_bucket_size=(arrival_length*52))
+arrival_and_week = feature_column.indicator_column(arrival_and_week)
 
 feature_columns = []
-feature_columns = feature_columns + [week, arrival, airline, flight_no]
+feature_columns = feature_columns + [week, arrival_one_hot, airline_one_hot, flight_no_one_hot, hour, arrival_and_week]
 feature_layer = tf.keras.layers.DenseFeatures(feature_columns)
 batch_size = 1000
 train_ds = df_to_dataset(train, shuffle=True, batch_size=batch_size, target_column='is_claim')
@@ -73,8 +88,8 @@ def train():
     feature_layer,
     layers.Dense(1, activation='relu')
   ])
-
-  model.compile(optimizer='adam',
+  optimiser = tf.keras.optimizers.Adam(lr=0.01, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)
+  model.compile(optimizer=optimiser,
                 loss='mean_squared_error',
                 run_eagerly=True)
   model.fit(train_ds,
@@ -89,10 +104,29 @@ def evaluate():
   loss = model.evaluate(test_ds)
   print("MSE Loss", loss)
 
+def experiment1():
+  model = tf.keras.Sequential([
+    feature_layer,
+    layers.Dense(128, activation='relu'),
+    layers.Dense(1, activation='relu')
+  ])
+  optimiser = tf.keras.optimizers.Adam(lr=0.01, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)
+  model.compile(optimizer=optimiser,
+                loss='mean_squared_error',
+                run_eagerly=True)
+  model.fit(train_ds,
+            validation_data=val_ds,
+            epochs=1000)
+  loss = model.evaluate(test_ds)
+  print("MSE Loss", loss)
+  model.save('model.h5')
+
 if args.mode == 'train':
   train()
 if args.mode == 'evaluate':
   evaluate()
+if args.mode == 'experiment1':
+  experiment1()
 
 
 
