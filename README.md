@@ -50,4 +50,4 @@ This calculation of probabilities is equivalent to 1 - exp(ln(p1) + ln(p2)), whi
 
 ![alt text](https://github.com/JeremyCollinsMPI/Flight-delays/blob/master/dag1.png)
 
-additionally, a feature cross between week and arrival is used.  this is to model e.g. weather events.
+additionally, a feature cross between week and arrival is used.  this is to model e.g. weather events.  also year and airline, to model the inefficiency of airlines which may have changed over times (e.g. an airline has improved).
