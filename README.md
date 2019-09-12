@@ -15,3 +15,6 @@ python main.py --mode train
 or 
 
 python main.py --mode evaluate
+
+
+![alt text](https://raw.githubusercontent.com/jeremycollinsmpi/flight-data/master/dag.png)
