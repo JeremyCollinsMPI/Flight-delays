@@ -17,4 +17,4 @@ or
 python main.py --mode evaluate
 
 
-![alt text](https://github.com/JeremyCollinsMPI/Flight-delays/blob/master/dag.png)
+![alt text](https://github.com/JeremyCollinsMPI/Flight-delays/blob/master/dag1.png)
