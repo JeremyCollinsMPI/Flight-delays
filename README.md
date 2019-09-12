@@ -13,7 +13,7 @@ Data is in this link: https://drive.google.com/a/terminal1.co/file/d/1AkEc76q6Nb
 
 Alternatively run this docker container, which comes with the repository and data included:
 
-docker run -it --rm jeremycollinsmpi/flight-data:latest
+docker run -it --rm jeremycollinsmpi/flight-data:latest /bin/bash
 
 
 ### Running the script
