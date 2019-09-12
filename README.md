@@ -37,6 +37,7 @@ and the following model to predict whether a flight will be delayed by more than
   model = tf.keras.Sequential([
     feature_layer,
     layers.Dense(1, activation='exponential'),
+    layers.ReLU(max_value=1, negative_slope=0.0, threshold=0.0),
     layers.Lambda(lambda x:(1-x))
   ])
 
