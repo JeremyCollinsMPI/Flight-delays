@@ -52,4 +52,7 @@ with 10% of dataset as training, there is a loss of 0.0065 on the training data 
 
 tried learning rate of 0.01 and 0.1; 0.01 seems to be fast, with batch sizes of 50,000.
 
+current result:
+validation loss of 0.0343, training loss of 0.0322, after ~40 epochs with 80-20 training-test split, and 80-20 training-validation split.
 
+going to see the impact of the crossed features now.
