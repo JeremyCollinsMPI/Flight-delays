@@ -44,3 +44,11 @@ and the following model to predict whether a flight will be delayed by more than
 ![alt text](https://github.com/JeremyCollinsMPI/Flight-delays/blob/master/dag1.png)
 
 additionally, a feature cross between week and arrival is used.  this is to model e.g. weather events.  also year and airline, to model the inefficiency of airlines which may have changed over time (e.g. an airline has improved).
+
+results:
+
+with 10% of dataset as training, there is a loss of 0.0065 on the training data after 500 epochs.  it has reached convergence because it has not improved for ~350 epochs.  it has a loss of 0.08 on the test data.  
+
+
+
+
