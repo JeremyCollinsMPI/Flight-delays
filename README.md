@@ -59,3 +59,5 @@ going to see the impact of the crossed features now.
 removing these gets training loss of 0.0356 and validation loss of 0.0360, test loss of 0.03645
 
 with two neurons in the first layer, the training loss at the end of 40 epochs is 0.0314 and test loss is 0.0329.  may continue going down.
+
+tried a different activation functon, 1 - (e ^ (-x)), which seems to converge at a training loss of 0.0361 and test loss of  0.0361 after 10 epochs. epochs.
