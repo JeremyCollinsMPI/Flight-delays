@@ -50,5 +50,6 @@ results:
 with 10% of dataset as training, there is a loss of 0.0065 on the training data after 500 epochs.  it has reached convergence because it has not improved for ~350 epochs.  it has a loss of 0.08 on the test data.  
 
 
+tried learning rate of 0.01 and 0.1; 0.01 seems to be fast, with batch sizes of 50,000.
 
 
