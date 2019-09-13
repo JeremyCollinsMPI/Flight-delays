@@ -56,3 +56,5 @@ current result:
 validation loss of 0.0343, training loss of 0.0322, after ~40 epochs with 80-20 training-test split, and 80-20 training-validation split.
 
 going to see the impact of the crossed features now.
+removing these gets training loss of 0.0356 and validation loss of 0.0360, test loss of 0.03645
+
