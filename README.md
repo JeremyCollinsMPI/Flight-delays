@@ -52,6 +52,8 @@ The following diagram illustrates the causal connections that are assumed in thi
 
 Initially, a model with just one layer predicting the output was used (i.e. model = tf.keras.Sequential([feature_layer, layers.Dense(1, activation='sigmoid')]), equvalent to a logistic regression.  An additional layer was added because it was found to reduce the test loss.
 
+The code uses the following tensorflow tutorial for classifying structured data as a template for preparing the feature columns (https://www.tensorflow.org/beta/tutorials/keras/feature_columns).
+
 ### Results
 
 80% of the data was used for training, which was then split 80%-20% for training and validation.  The mean squared error was chosen as the loss function to minimise.  Since the output was 0 or 1, this should be multiplied by 800 to get the mean squared error for the amount in HKD of the claim: the best test data mean squared error loss is therefore 800 * 0.029 = $23.2.  
