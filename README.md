@@ -78,7 +78,15 @@ with two neurons in the first layer, the training loss at the end of 40 epochs i
 with ten nuerons, training loss of 0.0293 and test loss of 0.0315 and looks like it is continuing to go down.
 after 60 epochs, training loss of 0.0245 and validation loss of 0.0295.
 
+
+with 100 neurons, 0.0296 test loss.  has to be stopped at 60 epochs because the validation loss begins to worsen (overfitting).
+
+
 tried a different activation functon, 1 - (e ^ (-x)), which seems to converge at a training loss of 0.0361 and test loss of  0.0361 after 10 epochs. epochs.
+
+
+
+
 
 things that I did:
 
