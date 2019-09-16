@@ -67,10 +67,10 @@ when mean absolute error is reduced, it goes down to 0.0442.  the mean squared e
 
 I could have used other crossed features, such as Hour of the day x Airline and so on.  These all may reduce the error.
 
-I could have used other data, such as weather data for the arrival airport.  Reasons I did not: i) this is already modelled to some extent by week x arrival (seasonal effects); (ii) extreme weather events only account for 4% of flight delays (https://www.bts.gov/topics/airlines-and-airports/understanding-reporting-causes-flight-delays-and-cancellations); (iii) there is a methodological reason for not including weather data, which is that it is unknown in advance (so weather data would be useless for predicting future flight delays).  One could use past weather forecasts as data (e.g. a few days ahead), and this would be more useful.
+The model could use other data such as weather forecasts (forecasts of extreme weather events in particular could predict delays).  To some extent this is already modelled by the feature cross Arrival x Week, which is partly in order to model seasonal changes in the probability of delay in particular destinations.  Extreme weather events account for 4% of delays (https://www.bts.gov/topics/airlines-and-airports/understanding-reporting-causes-flight-delays-and-cancellations) and so may help improve the accuracy of the model.
 
 I experimented with other activation functions besides sigmoid, including relu and a custom activation function 1 - (e ^ (-x)), neither of which improved accuracy or speed of training.
 
-The model predicted the output of 0 or 1 directly, without predicting the amount of time of the delay.  There may be some improvement if the time is predicted directly.
+The model predicted the output of 0 or 1 directly, without predicting the amount of time of the delay.  There may be some improvement if the time is predicted directly.  To test this I coded delays of more than 1.5 hours as 0.5 (0 being no claim and 1 being a claim), to test whether the model trained on this data would then be more accurate in predicting the unchanged test data.
 
 
