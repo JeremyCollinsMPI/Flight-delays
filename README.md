@@ -85,6 +85,8 @@ latest version with 100 neurons was trained for 49 epochs, and reached 0.0249 me
 
 tried a different activation functon, 1 - (e ^ (-x)), which seems to converge at a training loss of 0.0361 and test loss of  0.0361 after 10 epochs. epochs.
 
+when mean absolute error is reduced, it goes down to 0.0442.  the mean squared error is then 0.044.
+
 
 
 
