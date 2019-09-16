@@ -34,7 +34,7 @@ This repository treats the problem as a logistic regression, coding cancelled/de
 
 The model uses the following variables as one-hot vectors in the input:
 
-Week of the year (1-52), Year (2013-2016), Hour of the day (0-23), Airline, Flight number, Destination
+Week of the year (1-52), Year (2013-2016), Hour of the day (0-23), Airline, Flight number, Destination ('Arrival')
 
 along with feature crosses for Arrival x Week and Year x Airline.  Arrival x Week is to model seasonal events that happen in the destination, such as typhoons in places such as the Philippines; or particularly busy times of year which may cause delays in certain airports.  Year x Airline was chosen because the efficiency of certain airlines may have changed over time (e.g. an airline that had many delays one year may have had fewer the following year).
 
