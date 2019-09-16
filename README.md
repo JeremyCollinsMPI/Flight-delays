@@ -43,7 +43,7 @@ The following model in keras to predict the output of 0 or 1:
   model = tf.keras.Sequential([
     feature_layer,
     layers.Dense(100, activation = 'sigmoid',
-    layers.Dense(1, activation='sigmoid'),
+    layers.Dense(1, activation='sigmoid')
   ])
  
 The following diagram illustrates the causal connections that are assumed in this model.  It is assumed that all of the above input variables affect the probability of a delay, and so have to be estimated jointly.  There are also causal connections between these variables (e.g. destination airport of a flight predicts the airline), and these are also included.
@@ -58,44 +58,10 @@ The code uses the following tensorflow tutorial template for preparing the featu
 
 80% of the data was used for training, which was then split 80%-20% for training and validation.  The mean squared error was chosen as the loss function to minimise.  Since the output was 0 or 1, this should be multiplied by 800 to get the mean squared error for the amount in HKD of the claim: the best test data mean squared error loss is therefore (800^2) * 0.0249 = $15936.  the best mean absolute error is 0.0452, and so the best mean absolute error for the claims is 800 * 0.0452 = $36.16.
 
-With the logistic regression, the mean squared error goes down to 0.034 on the test data.  With a fully connected layer of 100 neurons, the mean squared error on the test data is 0.0295.  
-
-
-
-
-with 10% of dataset as training, there is a loss of 0.0065 on the training data after 500 epochs.  it has reached convergence because it has not improved for ~350 epochs.  it has a loss of 0.08 on the test data.  
-
-
-tried learning rate of 0.01 and 0.1; 0.01 seems to be fast, with batch sizes of 50,000.
-
-current result:
-validation loss of 0.0343, training loss of 0.0322, after ~40 epochs with 80-20 training-test split, and 80-20 training-validation split.
-
-going to see the impact of the crossed features now.
-removing these gets training loss of 0.0356 and validation loss of 0.0360, test loss of 0.03645
-
-with two neurons in the first layer, the training loss at the end of 40 epochs is 0.0314 and test loss is 0.0329.  may continue going down.
-with ten nuerons, training loss of 0.0293 and test loss of 0.0315 and looks like it is continuing to go down.
-after 60 epochs, training loss of 0.0245 and validation loss of 0.0295.
-
-
-with 100 neurons, 0.0296 test loss.  has to be stopped at 60 epochs because the validation loss begins to worsen (overfitting).
+With the logistic regression, the mean squared error goes down to 0.034 on the test data.  With a fully connected layer of 100 neurons, the mean squared error on the test data is 0.0295.    
 
 latest version with 100 neurons was trained for 49 epochs, and reached 0.0249 mean squared error. mean absolute error is 0.0452. 
-
-tried a different activation functon, 1 - (e ^ (-x)), which seems to converge at a training loss of 0.0361 and test loss of  0.0361 after 10 epochs. epochs.
-
 when mean absolute error is reduced, it goes down to 0.0442.  the mean squared error is then 0.044.
-
-
-
-
-
-things that I did:
-
-I used the following variables: 
-
-Week of the year (1-52), Year (2013-2016), Hour of the day (0-23), Airline, Flight number, Destination, Week x Arrival, Year x Airline
 
 ### Further work
 
@@ -105,6 +71,6 @@ I could have used other data, such as weather data for the arrival airport.  Rea
 
 I experimented with other activation functions besides sigmoid, including relu and a custom activation function 1 - (e ^ (-x)), neither of which improved accuracy or speed of training.
 
-The model predicted the output of 0 or 1 directly, without predicting the amount of time of the delay.  
+The model predicted the output of 0 or 1 directly, without predicting the amount of time of the delay.  There may be some improvement if the time is predicted directly.
 
 
