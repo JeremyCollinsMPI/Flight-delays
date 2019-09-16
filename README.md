@@ -52,7 +52,7 @@ The following diagram illustrates the causal connections that are assumed in thi
 
 Initially, a model with just one layer predicting the output was used (i.e. model = tf.keras.Sequential([feature_layer, layers.Dense(1, activation='sigmoid')]), equvalent to a logistic regression.  An additional layer was added because it was found to reduce the test loss.
 
-The code uses the following tensorflow tutorial for classifying structured data as a template for preparing the feature columns (https://www.tensorflow.org/beta/tutorials/keras/feature_columns).
+The code uses the following tensorflow tutorial template for preparing the feature columns (https://www.tensorflow.org/beta/tutorials/keras/feature_columns).
 
 ### Results
 
