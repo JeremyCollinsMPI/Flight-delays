@@ -81,7 +81,7 @@ after 60 epochs, training loss of 0.0245 and validation loss of 0.0295.
 
 with 100 neurons, 0.0296 test loss.  has to be stopped at 60 epochs because the validation loss begins to worsen (overfitting).
 
-latest version with 100 neurons was trained for 49 epochs, and reached 0.0249 mean squared error. mean absolute error is 
+latest version with 100 neurons was trained for 49 epochs, and reached 0.0249 mean squared error. mean absolute error is 0.0452. 
 
 tried a different activation functon, 1 - (e ^ (-x)), which seems to converge at a training loss of 0.0361 and test loss of  0.0361 after 10 epochs. epochs.
 
