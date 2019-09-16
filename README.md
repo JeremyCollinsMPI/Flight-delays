@@ -56,7 +56,7 @@ The code uses the following tensorflow tutorial template for preparing the featu
 
 ### Results
 
-80% of the data was used for training, which was then split 80%-20% for training and validation.  The mean squared error was chosen as the loss function to minimise.  Since the output was 0 or 1, this should be multiplied by 800 to get the mean squared error for the amount in HKD of the claim: the best test data mean squared error loss is therefore 800 * 0.029 = $23.2.  
+80% of the data was used for training, which was then split 80%-20% for training and validation.  The mean squared error was chosen as the loss function to minimise.  Since the output was 0 or 1, this should be multiplied by 800 to get the mean squared error for the amount in HKD of the claim: the best test data mean squared error loss is therefore (800^2) * 0.0249 = $15936.  the best mean absolute error is 0.0452, and so the best mean absolute error for the claims is 800 * 0.0452 = $36.16.
 
 With the logistic regression, the mean squared error goes down to 0.034 on the test data.  With a fully connected layer of 100 neurons, the mean squared error on the test data is 0.0295.  
 
@@ -81,6 +81,7 @@ after 60 epochs, training loss of 0.0245 and validation loss of 0.0295.
 
 with 100 neurons, 0.0296 test loss.  has to be stopped at 60 epochs because the validation loss begins to worsen (overfitting).
 
+latest version with 100 neurons was trained for 49 epochs, and reached 0.0249 mean squared error. mean absolute error is 
 
 tried a different activation functon, 1 - (e ^ (-x)), which seems to converge at a training loss of 0.0361 and test loss of  0.0361 after 10 epochs. epochs.
 
