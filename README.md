@@ -28,7 +28,7 @@ python main.py --mode evaluate
 
 ### Explanation
 
-This repository is for predicting flight delay time in a dataset provided in this link (https://t1.me/docs/assessments).  The dataset contains information on departure and arrival airports, time of the flight, airline, flight number, date of the flight, and how many hours the flight was delayed.  Flights delayed beyond 3 hours or cancelled then pay customers a fixed amount of HKD $800.  The task is to predict claim amounts for flights ($0 or $800).
+This repository is for predicting flight delay time, in an exercise in this link (https://t1.me/docs/assessments).  The dataset contains information on departure and arrival airports, time of the flight, airline, flight number, date of the flight, and how many hours the flight was delayed.  Flights delayed beyond 3 hours or cancelled then pay customers a fixed amount of HKD $800.  The task is to predict claim amounts for flights ($0 or $800).
 
 This repository treats the problem as a logistic regression, coding cancelled/delayed more than three hours as 1 and anything else as 0.  The aim is to minimise the absolute error and the mean squared error.  
 
