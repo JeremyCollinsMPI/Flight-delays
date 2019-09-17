@@ -56,12 +56,16 @@ The code uses the following tensorflow tutorial template for preparing the featu
 
 ### Results
 
-80% of the data was used for training, which was then split 80%-20% for training and validation.  The mean squared error was chosen as the loss function to minimise.  Since the output was 0 or 1, this should be multiplied by 800 to get the mean squared error for the amount in HKD of the claim: the best test data mean squared error loss is therefore (800^2) * 0.0249 = $15936.  the best mean absolute error is 0.0452, and so the best mean absolute error for the claims is 800 * 0.0452 = $36.16.
+80% of the data was used for training, which was then split 80%-20% for training and validation.  The mean squared error was chosen as the loss function to minimise.  Since the output was 0 or 1, this should be multiplied by 800^2 to get the mean squared error for the amount in HKD of the claim: the best test data mean squared error loss is therefore (800^2) * 0.0249 = $15936.  The best mean absolute error is 0.0452, and so the best mean absolute error for the claims is 800 * 0.0452 = $36.16.
 
 With the logistic regression, the mean squared error goes down to 0.034 on the test data.  With a fully connected layer of 100 neurons, the mean squared error on the test data is 0.0295.    
 
 latest version with 100 neurons was trained for 49 epochs, and reached 0.0249 mean squared error. mean absolute error is 0.0452. 
 when mean absolute error is reduced, it goes down to 0.0442.  the mean squared error is then 0.044.
+
+I experimented with other activation functions besides sigmoid, including relu and a custom activation function 1 - (e ^ (-x)), neither of which improved accuracy or speed of training.
+
+The model predicted the output of 0 or 1 directly, without predicting the amount of time of the delay.  There may be some improvement if the time is predicted directly.  To test this I coded delays of more than 1.5 hours as 0.5 (0 being no claim and 1 being a claim), to test whether the model trained on this data would then be more accurate in predicting the unchanged test data.  This was run for 100 epochs, and the validation mean squared error had gone down to ....  The test mean squared error was ... .  
 
 ### Further work
 
@@ -69,8 +73,7 @@ I could have used other crossed features, such as Hour of the day x Airline and 
 
 The model could use other data such as weather forecasts (forecasts of extreme weather events in particular could predict delays).  To some extent this is already modelled by the feature cross Arrival x Week, which is partly in order to model seasonal changes in the probability of delay in particular destinations.  Extreme weather events account for 4% of delays (https://www.bts.gov/topics/airlines-and-airports/understanding-reporting-causes-flight-delays-and-cancellations) and so may help improve the accuracy of the model.
 
-I experimented with other activation functions besides sigmoid, including relu and a custom activation function 1 - (e ^ (-x)), neither of which improved accuracy or speed of training.
+Predicting delay time directly rather than claim/no claim may result in better accuracy.  
 
-The model predicted the output of 0 or 1 directly, without predicting the amount of time of the delay.  There may be some improvement if the time is predicted directly.  To test this I coded delays of more than 1.5 hours as 0.5 (0 being no claim and 1 being a claim), to test whether the model trained on this data would then be more accurate in predicting the unchanged test data.
 
 
