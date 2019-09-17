@@ -50,7 +50,7 @@ The following diagram illustrates the causal connections that are assumed in thi
 
 ![alt text](https://github.com/JeremyCollinsMPI/Flight-delays/blob/master/dag1.png)
 
-Initially, a model with just one layer predicting the output was used (i.e. model = tf.keras.Sequential([feature_layer, layers.Dense(1, activation='sigmoid')]), equvalent to a logistic regression.  An additional layer was added because it was found to reduce the test loss.  The model was trained using the Adam optimisation algorithm with a learning rate of 0.01 (other learning rates such as 0.1 did not shorten the training time).
+Initially, a model with just one layer predicting the output was used (i.e. model = tf.keras.Sequential([feature_layer, layers.Dense(1, activation='sigmoid')]), equvalent to a logistic regression.  An additional layer was added because it was found to reduce the test loss (increasing the number of neurons did not subsequently decrease the test loss).  The model was trained using the Adam optimisation algorithm with a learning rate of 0.01 (other learning rates such as 0.1 did not shorten the training time).
 
 The code uses the following tensorflow tutorial template for preparing the feature columns (https://www.tensorflow.org/beta/tutorials/keras/feature_columns).
 
