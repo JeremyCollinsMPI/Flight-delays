@@ -24,7 +24,7 @@ python main.py --mode train
 
 or 
 
-python main.py --mode evaluate ./models/model1/training_1/cp.ckpt
+python main.py --mode evaluate --path models/model1/training_1/cp.ckpt
 
 ### Explanation
 
