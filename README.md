@@ -38,7 +38,7 @@ Week of the year (1-52), Year (2013-2016), Hour of the day (0-23), Airline, Flig
 
 along with feature crosses for Arrival x Week and Year x Airline.  Arrival x Week is to model seasonal events that happen in the destination, such as typhoons in places such as the Philippines; or particularly busy times of year which may cause delays in certain airports.  Year x Airline was chosen because the efficiency of certain airlines may have changed over time (e.g. an airline that had many delays one year may have had fewer the following year).
 
-The following model in keras to predict the output of 0 or 1:
+The following model in keras to predict the output of 0 (no claim) or 1 (claim):
 
   model = tf.keras.Sequential([
     feature_layer,
